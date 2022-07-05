@@ -29,6 +29,30 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldFindSeveralItemsByName() {
+
+        Product[] expected = new Product[]{};
+        Product[] actual = manager.searchBy("Death on the Nile" + "The hound of the Baskervilles");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindSeveralDifferentItemsByName() {
+
+        Product[] expected = new Product[]{};
+        Product[] actual = manager.searchBy("iPhone 12" + "The girl with the dragon tattoo");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindSeveralDifferent() {
+
+        Product[] expected = new Product[]{};
+        Product[] actual = manager.searchBy("iPhone 12" + "Stieg Larsson");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 
     @Test
     public void shouldFindAuthor() {
