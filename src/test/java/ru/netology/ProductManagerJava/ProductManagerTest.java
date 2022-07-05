@@ -21,14 +21,21 @@ public class ProductManagerTest {
         manager.add(book3);
     }
 
-
     @Test
-    public void shouldFindAuthor() {
-        Product[] expected = {book};
-        Product[] actual = manager.searchBy("Agatha Christie");
+    public void shouldFindAll() {
+
+        Product[] expected = new Product[]{book, book1, smartphone, book3};
+        Product[] actual = manager.getAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 
+
+    @Test
+    public void shouldFindAuthor() {
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Agatha Christie");
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
     @Test
     public void shouldFindNameBook() {
@@ -51,7 +58,6 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-
     @Test
     public void shouldFindPhoneName() {
         Product[] expected = {smartphone};
@@ -61,7 +67,7 @@ public class ProductManagerTest {
 
     @Test
     public void shouldFindPhoneManufacturer() {
-        Product[] expected = {smartphone};
+        Product[] expected = {};
         Product[] actual = manager.searchBy("Apple");
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -81,6 +87,7 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+
     @Test
     public void shouldFindCost() {
         Product[] expected = {};
@@ -96,9 +103,9 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldNotFindNull() {
-        Product[] expected = {};
-        Product[] actual = manager.searchBy(null);
+    void shouldNotFound() {
+        Product[] expected = new Product[0];
+        Product[] actual = manager.searchBy("Someone");
         Assertions.assertArrayEquals(expected, actual);
     }
 

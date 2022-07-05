@@ -13,7 +13,16 @@ public class ProductRepository {
         products = plusOne;
     }
 
-    public Product[] getAll() {
+    public Product findById(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public Product[] findAll() {
         return products;
     }
 
