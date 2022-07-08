@@ -12,6 +12,7 @@ public class ProductManagerTest {
     Product book1 = new Book(2, "The hound of the Baskervilles", 450, "Arthur Conan Doyle");
     Product smartphone = new Smartphone(3, "iPhone 12", 30_000, "Apple");
     Product book3 = new Book(3, "The girl with the dragon tattoo", 0, "Stieg Larsson");
+    Product book4 = new Book(7, "Death on the Orient Express", 700, "Agatha Christie");
 
     @BeforeEach
     public void SetUp() {
@@ -19,12 +20,13 @@ public class ProductManagerTest {
         manager.add(book1);
         manager.add(smartphone);
         manager.add(book3);
+        manager.add(book4);
     }
 
     @Test
     public void shouldFindAll() {
 
-        Product[] expected = new Product[]{book, book1, smartphone, book3};
+        Product[] expected = new Product[]{book, book1, smartphone, book3, book4};
         Product[] actual = manager.getAll();
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -32,8 +34,8 @@ public class ProductManagerTest {
     @Test
     public void shouldFindSeveralItemsByName() {
 
-        Product[] expected = new Product[]{};
-        Product[] actual = manager.searchBy("Death on the Nile" + "The hound of the Baskervilles");
+        Product[] expected = new Product[]{book, book4};
+        Product[] actual = manager.searchBy("Death");
         Assertions.assertArrayEquals(expected, actual);
     }
 
